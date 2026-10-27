@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Task Manager</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Task Manager Application</h1>
+    <p id="today"></p>
+  </header>
+
+  <!-- Summary counters -->
+  <section class="stats">
+    <div><b id="totalCount">0</b><span>Total</span></div>
+    <div><b id="pendingCount">0</b><span>Pending</span></div>
+    <div><b id="progressCount">0</b><span>In Progress</span></div>
+    <div><b id="doneCount">0</b><span>Completed</span></div>
+  </section>
+  <div class="bar"><div id="barFill"></div></div>
+  <p id="barText" class="bar-text">0% completed</p>
+
+  <!-- Add / Edit form -->
+  <form id="taskForm" class="panel">
+    <h2 id="formTitle">Add New Task</h2>
+    <input id="title" type="text" maxlength="80" placeholder="What do you need to do?" required>
+    <div class="row">
+      <select id="priority" aria-label="Priority">
+        <option value="Low">Low priority</option>
+        <option value="Medium" selected>Medium priority</option>
+        <option value="High">High priority</option>
+      </select>
+      <input id="dueDate" type="date" aria-label="Due date">
+    </div>
+    <div class="row">
+      <button type="submit" id="saveBtn" class="btn primary">Add Task</button>
+      <button type="button" id="cancelBtn" class="btn ghost hidden">Cancel</button>
+    </div>
+    <p id="error" class="error"></p>
+  </form>
+
+  <!-- Search + filters -->
+  <section class="toolbar">
+    <input id="search" type="search" placeholder="🔍 Search tasks">
+    <div class="filters">
+      <button class="filter active" data-filter="All">All</button>
+      <button class="filter" data-filter="Pending">Pending</button>
+      <button class="filter" data-filter="In Progress">In Progress</button>
+      <button class="filter" data-filter="Completed">Completed</button>
+    </div>
+  </section>
+
+  <!-- Task list -->
+  <ul id="taskList" class="list"></ul>
+  <p id="empty" class="empty hidden">No tasks here yet. Add your first one above! 🎯</p>
+
+  <button id="clearDone" class="btn danger">Clear completed tasks</button>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
